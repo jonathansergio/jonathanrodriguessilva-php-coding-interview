@@ -9,9 +9,15 @@ class ClientModel {
 	private $clientData;
 	private $helper;
 
-	function __construct() {
+    /**
+     * @var DogModel
+     */
+    private $dog;
+
+    function __construct() {
 		$this->helper = new Helpers();
-		$string = file_get_contents(dirname(__DIR__) . '../scripts/clients.json');
+        $this->dog = new DogModel();
+		$string = file_get_contents(dirname(__DIR__) . '../../scripts/clients.json');
 		$this->clientData = json_decode($string, true);
 	}
 
@@ -53,4 +59,17 @@ class ClientModel {
 		}
 		return null;
 	}
+
+
+    public function getDogsByClientId($id): array
+    {
+        $dogs = $this->dog->getDogs();
+        $clientDogs = [];
+        foreach ($dogs as $dog) {
+            if ($dog['clientid'] == $id) {
+                $clientDogs[] = $dog['id'];
+            }
+        }
+        return $clientDogs;
+    }
 }

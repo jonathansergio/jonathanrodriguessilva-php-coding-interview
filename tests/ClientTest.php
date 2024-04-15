@@ -4,6 +4,7 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use Src\controllers\Client;
+use Src\controllers\Dog;
 
 class ClientTest extends TestCase {
 
@@ -16,6 +17,7 @@ class ClientTest extends TestCase {
 	public function setUp(): void {
 		parent::setUp();
 		$this->client = new Client();
+		$this->dog = new Dog();
 	}
 
 	/** @test */
@@ -63,4 +65,14 @@ class ClientTest extends TestCase {
 		$this->assertIsArray($results);
 		$this->assertIsNotObject($results);
 	}
+
+    /** @test */
+    public function getAverageOfDogsByClient() {
+
+        $dogs = $this->client->getDogsByClientId(4);
+        $average = $this->dog->getAgeAverage($dogs);
+
+        $this->assertEquals(10, $average);
+        $this->assertIsNotObject($average);
+    }
 }

@@ -13,4 +13,13 @@ class Booking {
 	public function getBookings() {
 		return $this->getBookingModel()->getBookings();
 	}
+
+    public function createBooking($booking) {
+        return $this->getBookingModel()->createBooking($booking);
+    }
+
+    public function getAverageOfDogsByClient($booking) {
+        return $this->getBookingModel()->getAverageOfDogsByClient($booking);
+    }
+
 }

@@ -13,4 +13,8 @@ class Dog {
 	public function getDogs() {
 		return $this->getDogModel()->getDogs();
 	}
+
+    public function getAgeAverage($dogs) {
+        return $this->getDogModel()->getAgeAverage($dogs);
+    }
 }

@@ -26,4 +26,9 @@ class Client {
 	public function getClientById($id) {
 		return $this->getClientModel()->getClientById($id);
 	}
+
+    public function getDogsByClientId($id) {
+        return $this->getClientModel()->getDogsByClientId($id);
+    }
+
 }
